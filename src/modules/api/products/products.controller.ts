@@ -20,7 +20,7 @@ import {
 import { UpdateProductDTO } from '@/modules/api/products/dto/update-product.dto';
 import {
   ApiBearerAuth,
-  ApiBody,
+  ApiBody, ApiHeader,
   ApiOperation,
   ApiQuery,
   ApiResponse,
@@ -39,6 +39,11 @@ export class ProductsController {
   @Post('create')
   @UseGuards(AdminGuard)
   @ApiBearerAuth()
+  @ApiHeader({
+    name: 'Authorization',
+    description: 'Bearer token',
+    required: true,
+  })
   @ApiOperation({ summary: 'Create new product' })
   @ApiResponse({
     status: HttpStatus.CREATED,
@@ -104,6 +109,11 @@ export class ProductsController {
   @Patch(':id')
   @UseGuards(AdminGuard)
   @ApiBearerAuth()
+  @ApiHeader({
+    name: 'Authorization',
+    description: 'Bearer token',
+    required: true,
+  })
   @ApiOperation({ summary: 'Update a product' })
   @ApiResponse({ status: 200, description: 'Product updated successfully', type: ProductDTO })
   @ApiResponse({ status: 404, description: 'Product not found'})

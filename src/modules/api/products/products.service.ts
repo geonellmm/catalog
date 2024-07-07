@@ -36,7 +36,7 @@ export class ProductsService {
         price: product.price.toString()
       }
     } catch (error) {
-      throw new Error('Failed to create product: ' + error.message);
+      throw new InternalServerErrorException('Failed to create product');
     }
   }
 

@@ -9,7 +9,7 @@
 - Postgres
 - Docker
 
-## Local Development Setup
+## Running the Server
 This setup ensures that your NestJS application, along with Prisma migrations and seeders, runs smoothly with PostgreSQL in a Dockerized environment.
 
 ### Prerequisites
