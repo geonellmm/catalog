@@ -17,6 +17,7 @@ services:
     build: .
     container_name: catalog_server
     environment:
+      NODE_ENV: production
       DATABASE_URL: ${DATABASE_URL}
       JWT_SECRET_KEY: ${JWT_SECRET_KEY}
       PORT: ${PORT}
