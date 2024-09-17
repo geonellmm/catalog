@@ -7,14 +7,17 @@ RUN apt-get update && apt-get install -y postgresql-client && rm -rf /var/lib/ap
 # Set the working directory
 WORKDIR /usr/src/app
 
+# Install Nest CLI globally
+RUN npm install -g @nestjs/cli
+
+# Install Prisma CLI globally 
+RUN npm install -g prisma
+
 # Copy package.json and package-lock.json
 COPY package*.json ./
 
 # Install dependencies
 RUN npm install
-
-# Install Prisma CLI globally (if using Prisma for migrations)
-RUN npm install -g prisma
 
 # Copy the rest of the application code
 COPY . .
