@@ -7,8 +7,8 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
   const config = new DocumentBuilder()
-    .setTitle('Wristcheck API Documentation')
-    .setDescription('The Wristcheck API description')
+    .setTitle('Catalog API Documentation')
+    .setDescription('The Catalog API description')
     .setVersion('1.0')
     .build();
 
