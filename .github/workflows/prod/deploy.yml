@@ -11,7 +11,7 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Set up SSH
         uses: webfactory/ssh-agent@v0.5.3
@@ -21,8 +21,9 @@ jobs:
       - name: Build and Deploy Docker Container
         run: |
           ssh -o StrictHostKeyChecking=no ubuntu@${{ secrets.AWS_EC2_IP }} << 'EOF'
-            cd /var/www/production/catalog || exit
-            git pull origin master
-            docker compose -f docker-compose.prod.yml build
-            docker compose -f docker-compose.prod.yml up -d
+            cd /var/www/production/catalog || exit 1
+            git pull origin master || exit 1
+            docker compose -f docker-compose.prod.yml pull || exit 1
+            docker compose -f docker-compose.prod.yml build || exit 1
+            docker compose -f docker-compose.prod.yml up -d || exit 1
           EOF
