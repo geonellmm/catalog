@@ -21,6 +21,7 @@ jobs:
       - name: Build and Deploy Docker Container
         run: |
           ssh -o StrictHostKeyChecking=no ubuntu@${{ secrets.AWS_EC2_IP }} << 'EOF'
+            git config --global --add safe.directory /var/www/production/catalog
             cd /var/www/production/catalog || exit 1
             git pull origin master || exit 1
             docker compose -f docker-compose.prod.yml pull || exit 1
